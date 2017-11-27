@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Area | DA</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="getRations.js"></script>
+
+<!-- 	<script type="text/javascript">
+		$(document).ready(function(){
+
+	var data =
+		{
+
+			'refugees':
+				{
+					'A001':{
+							'family_id':'F101',
+							'photo': "photo1.jpg",
+							},
+					
+					'A002':{
+							'family_id':'F101',
+							'photo': "photo2.jpg",
+							'rations':{
+								 'food': 30,
+								 'tools':20,
+								 'utilities':10,
+									}
+							},
+
+					'A003':{
+							'family_id':'F101',
+							'photo': "photo3.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+
+							},
+
+					'A004':{
+							'family_id':'F101',
+							'photo': "photo4.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A005':{
+							'family_id':'F102',
+							'photo': "photo5.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A006':{
+							'family_id':'F102',
+							'photo': "photo6.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A007':{
+							'family_id':'F103',
+							'photo': "photo7.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A008':{
+							'family_id':'F103',
+							'photo': "photo8.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A009':{
+							'family_id':'F103',
+							'photo': "photo9.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+									}
+							},
+
+					'A010':{
+							'family_id':'F104',
+							'photo': "photo10.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+										}
+							},
+
+
+					'A011':{
+							'family_id':'F104',
+							'photo': "photo11.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+										}
+							},
+					'A012':{
+							'family_id':'F104',
+							'photo': "photo12.jpg",
+							'rations':{
+								 'food': 60,
+								 'tools':50,
+								 'utilities':60,
+										}
+							}
+
+
+				},
+
+
+			'families':
+				{
+					'F101':{
+							'members':['A001', 'A002','A003','A004'],
+							'received':0,
+							'receiver':'',
+							'rations':
+									{
+									'food': 50,
+								 	'tools':10,
+								 	'utilities':20,
+									}
+							},
+
+					'F102':{
+							'members':['A005','A006'],
+							'received':0,
+							'receiver':'',
+							'rations':
+									{
+									'food': 30,
+								 	'tools':20,
+								 	'utilities':25,
+									}
+					},
+
+					'F103':{
+							'members':['A007','A008','A009'],
+							'received':0,
+							'receiver':'',
+							'rations':
+									{
+									'food': 24,
+								 	'tools':15,
+								 	'utilities':35,
+									}
+					},
+
+					'F104':{
+							'members':['A010','A011','A012'],
+							'received':0,
+							'receiver':'',
+							'rations':
+									{
+									'food': 62,
+								 	'tools':34,
+								 	'utilities':32,
+									}
+					}
+
+				}
+		};	
+
+	$('select').change(function(){
+		var ident = $('select').find(":selected").text();
+		// console.log(ident)
+		var user_fam = data['refugees'][ident]['family_id']
+		//console.log(user_fam)
+
+		var family = data['families'][user_fam];
+
+
+		var food = family['rations']['food'];
+
+		// console.log(data);
+
+		// var family = data[ident]
+
+		// var food = family['food']
+
+		$('#foodp').text(food);
+		 $('#toolsp').text(family['rations']['tools']);
+		$('#utilitiesp').text(family['rations']['utilities']);
+
+		if (family['received']==1){
+			$("button").prop('disabled', true);
+			$("#message").text("Your family has already received rations");
+			$("#message").css("visibility", "visible");
+		}
+
+		else{
+			$("button").prop('disabled', false);
+			$("#message").css("visibility", "hidden");
+		}
+
+		// console.log($('#foodp'));
+
+
+	$("button").click(function(){
+		var ident = $('select').find(":selected").text();
+		// console.log(ident)
+		var user_fam = data['refugees'][ident]['family_id']
+
+		var family = data['families'][user_fam]
+
+		data['families'][user_fam]['received'] =1
+
+		// $("button").prop('disabled', false);
+		this.disabled=true
+
+        console.log(family['received'])
+
+    });
+		
+
+
+	});
+
+
+});
+	</script> -->
+
+	<style type="text/css">
+		label, p{
+			display:inline-block;
+		}
+	</style>
+  </head>
+  
+  <body style="font-family:'Raleway', sans-serif">
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">KODHI</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Welcome, Timo</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Distribution</h3>
+          </div>
+          <div class="col-md-2">
+            
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Dashboard</a></li>
+          
+        </ol>
+      </div>
+    </section>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+             <div class="list-group">
+              
+             
+              <a href="staff.html" class="list-group-item active main-color-bg"><img src="img/refug.png"> Distribute</a>
+             
+			  
+            </div>
+
+            <div class="well">
+           
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- Website Overview -->
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Distribution Breakdown</h3>
+              </div>
+			  <center>
+      <label id="identify">Identification Number</label><br>
+		<select >
+			<option value="a001">A001</option>
+			<option value="a002">A002</option>
+			<option value="a003">A003</option>
+			<option value="a004">A004</option>
+			<option value="a005">A005</option>
+			<option value="a006">A006</option>
+			<option value="a007">A007</option>
+			<option value="a008">A008</option>
+			<option value="a009">A009</option>
+			<option value="a010">A010</option>
+			<option value="a011">A011</option>
+			<option value="a012">A012</option>
+		</select> <br>
+	<p id="message" style="visibility:none; color:red; font-weight:bold"></p><br>
+	<label>Photo</label><p id="photo"></p><br>
+	<label id="rations">Rations: </label><br>
+		<label id="food">Food: </label> <p id="foodp"></p><br>
+		<label id="tools">Tools: </label> <p id="toolsp"></p><br>
+		<label id="utilities">Utilities: </label> <p id="utilitiesp"></p><br>
+		<button class="btn btn-primary">Submit</button>
+	
+        </center>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+     <br> <br> <br> <br>
+    <footer id="footer">
+      <p>Copyright DataClan, &copy; 2017</p>
+    </footer>
+
+    <!-- Modals -->
+
+    <!-- Add Page -->
+    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    
+  </div>
+</div>
+
+  <script>
+     CKEDITOR.replace( 'editor1' );
+ </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>
